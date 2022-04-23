@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  db:
+    build: db/
+    image: dev.darrenhacks/bind-variables-example_db:v1
+    restart: always
+    environment:
+      POSTGRES_DB: bind_variables_example
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: p0stgr@s
+    ports:
+      - '5432:5432'
+    expose:
+      - '5432'
+  app:
+    build: code/
+    image: dev.darrenhacks/bind-variables-example_app:v1
+    depends_on:
+      - db
+    restart: "no"
+    environment:
+      DB_URI: postgres://postgres:p0stgr@s@db:5432/bind_variables_example
