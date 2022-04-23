@@ -2,7 +2,7 @@ version: '3.9'
 services:
   db:
     build: db/
-    image: dev.darrenhacks/bind-variables-example_db:v1
+    image: dev.darrenhacks/bind-variables-example_db:0.1
     restart: always
     environment:
       POSTGRES_DB: bind_variables_example
@@ -14,7 +14,7 @@ services:
       - '5432'
   app:
     build: code/
-    image: dev.darrenhacks/bind-variables-example_app:v1
+    image: dev.darrenhacks/bind-variables-example_app:0.1
     depends_on:
       - db
     restart: "no"
