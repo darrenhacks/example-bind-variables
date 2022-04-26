@@ -13,9 +13,21 @@ using bind variable.
 
 Both the database and application are configured to run inside Docker 
 containers. If you have Docker installed, you can build and run both 
-with the command `docker-copose up`. The application container will shut
+with the command `docker-copose up --build`. The application container will shut
 down after the application completes, but the database will remain
-running. You can shut off the database with `docker-compose down`.
+running. You can shut off the database with the command `docker-compose down`.
+
+## What to Look For
+
+There are two files here that are the core of the demonstration.
+
+[vulnerable.go](code/vulnerable.go) shows a common pattern of dynamically building SQL based
+on a hard-coded base and using string formatting or concatenation to dynamically change the
+SQL at runtime. It shows how carefully crafted inputs can produce query results the programmer 
+did not intend.
+
+[not-vulnerable.go](code/not-vulnerable.go) shows how to use bind variables to eliminate that
+issue.
 
 ## Caveat
 

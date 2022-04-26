@@ -14,7 +14,6 @@ func main() {
 		fmt.Printf("%s\n", err)
 		os.Exit(-1)
 	}
-
 	fmt.Printf("Connecting...\n")
 
 	// Try and get a connection to the database.
@@ -24,6 +23,21 @@ func main() {
 		os.Exit(-1)
 	}
 	defer conn.Close()
-
 	fmt.Printf("Database connection successful...\n\n")
+
+	// Do a demonstration of how dynamically building SQL at runtime
+	// is vulnerable to SQL injection.
+	err = DoVulnerableDemo(conn)
+	if err != nil {
+		fmt.Printf("%s\n", err)
+		os.Exit(-1)
+	}
+
+	// Do a demonstration of how using bind variables helps eliminate
+	// SQL injection vulnerabilities.
+	err = DoNotVulnerableDemo(conn)
+	if err != nil {
+		fmt.Printf("%s\n", err)
+		os.Exit(-1)
+	}
 }
