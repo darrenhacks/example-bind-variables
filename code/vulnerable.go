@@ -36,7 +36,7 @@ func doVulnerableDemo(conn *sql.DB, constraint string) error {
 		return err
 	}
 	if rowCount == 1 {
-		fmt.Printf("Correct number of rows were processed.\n\n")
+		fmt.Printf("Expected and read 1 row.\n\n")
 	} else {
 		fmt.Printf("*** Incorrect number of rows were processed: %d. This call was vulnerable.\n\n", rowCount)
 	}

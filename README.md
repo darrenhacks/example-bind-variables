@@ -35,6 +35,9 @@ but less obvious scenarios.
 
 [in-list.go](code/in-list.go) shows using bind variables with an in-list.
 
+[temp-table.go](code/temp-table.go) shows using a temporary table to dynamically determine
+what to process at runtime.
+
 ## Caveat
 
 I am new to Go, and chose to write this application in Go as a learning
