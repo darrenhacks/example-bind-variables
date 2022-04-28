@@ -19,7 +19,8 @@ running. You can shut off the database with the command `docker-compose down`.
 
 ## What to Look For
 
-There are two files here that are the core of the demonstration.
+There are two files that demonstrate that dynamically constructing SQL can lead
+to SQL injection vulnerabilities and how bind variables can mitigate them.
 
 [vulnerable.go](code/vulnerable.go) shows a common pattern of dynamically building SQL based
 on a hard-coded base and using string formatting or concatenation to dynamically change the
@@ -28,6 +29,11 @@ did not intend.
 
 [not-vulnerable.go](code/not-vulnerable.go) shows how to use bind variables to eliminate that
 issue.
+
+There are additional examples that show examples of using bind variables in other common
+but less obvious scenarios.
+
+[in-list.go](code/in-list.go) shows using bind variables with an in-list.
 
 ## Caveat
 

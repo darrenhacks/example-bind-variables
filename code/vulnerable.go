@@ -59,19 +59,5 @@ func runConstructedSql(conn *sql.DB, constructedSql string) (int, error) {
 	}
 	defer rows.Close()
 
-	var accountId int
-	var accountName string
-	var accountBalance float32
-
-	rowCount := 0
-	for rows.Next() {
-		rowCount++
-		err = rows.Scan(&accountId, &accountName, &accountBalance)
-		if err != nil {
-			return rowCount, err
-		}
-		fmt.Printf("[%d]: %s {$%.2f)\n", accountId, accountName, accountBalance)
-	}
-
-	return rowCount, nil
+	return ScanCursorAndPrint(rows)
 }

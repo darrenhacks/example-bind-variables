@@ -40,4 +40,11 @@ func main() {
 		fmt.Printf("%s\n", err)
 		os.Exit(-1)
 	}
+
+	// Do a demonstration of using bind variables with an in-list.
+	err = DoInList(conn)
+	if err != nil {
+		fmt.Printf("%s\n", err)
+		os.Exit(-1)
+	}
 }
