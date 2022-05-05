@@ -26,7 +26,7 @@ func DoTempTableDemo(conn *sql.DB) error {
 		return err
 	}
 
-	populateTemp(transaction, expectedRowCount)
+	err = populateTemp(transaction, expectedRowCount)
 	if err != nil {
 		transaction.Rollback()
 		return err
